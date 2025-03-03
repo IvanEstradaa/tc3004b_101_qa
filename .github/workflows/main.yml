@@ -55,7 +55,7 @@ jobs:
 
             cd ..
 
-            cd test
+            cd tests
 
             npm install
 
