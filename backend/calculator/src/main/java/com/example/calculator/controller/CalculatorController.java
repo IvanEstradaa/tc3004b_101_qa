@@ -5,24 +5,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.calculator.view.Calculator;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
 public class CalculatorController {
-    @GetMapping("/add/{a}/{b}")
-    public int add(@PathVariable int a, @PathVariable int b) {
-        return a + b;
+
+    @GetMapping("/add")
+    public Calculator add(@RequestParam String num1, @RequestParam String num2) {
+        int result = Integer.parseInt(num1) + Integer.parseInt(num2);
+        return new Calculator(Integer.toString(result));
     }
 
-    @GetMapping("/subtract/{a}/{b}")
-    public int subtract(@PathVariable int a, @PathVariable int b) {
-        return new Calculator(a - b).result();
+    @GetMapping("/subtract")
+    public Calculator subtract(@RequestParam String num1, @RequestParam String num2) {
+        int result = Integer.parseInt(num1) * Integer.parseInt(num2);
+        return new Calculator(Integer.toString(result));
     }
 
-    @GetMapping("/multiply/{a}/{b}")
-    public Calculator multiply(@PathVariable int a, @PathVariable int b) {
-        return new Calculator(a * b);
+    @GetMapping("/multiply")
+    public Calculator multiply(@RequestParam String num1, @RequestParam String num2) {
+        int result = Integer.parseInt(num1) * Integer.parseInt(num2);
+        return new Calculator(Integer.toString(result));
     }
     
 }

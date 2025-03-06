@@ -20,58 +20,42 @@ describe('Calculator1', function() {
 
     }
 
-  beforeEach(async function() {
-
-    const chrome = require('selenium-webdriver/chrome');
-
-        const options = new chrome.Options();
-
-        options.addArguments('--headless', '--no-sandbox', '--disable-dev-shm-usage');
-
-        driver = await new Builder().forBrowser('chrome').setChromeOptions(options).build();
-
+    beforeEach(async function () {
+      const chrome = require('selenium-webdriver/chrome');
+      const options = new chrome.Options();
+      options.addArguments('--headless', '--no-sandbox', '--disable-dev-shm-usage');
     
-
+      driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(options)
+        .build();
+      vars = {};
+    });
     
-
-    vars = {}
-
-  })
 
   afterEach(async function () {
-
-        if (driver) {
-
-            // Take a screenshot of the result page
-
-            const filename = this.currentTest.fullTitle()
-
-                .replace(/['"]+/g, '')
-
-                .replace(/[^a-z0-9]/gi, '_')
-
-                .toLowerCase();;
-
-            const encodedString = await driver.takeScreenshot();
-
-            await fs.writeFileSync(`./screenshots/${filename}.png`,
-
-                encodedString, 'base64');
-
- 
-
-            // Close the browser
-
-            await driver.quit();
-
-        }
-
-    });
-
+    if (driver) {
+      try {
+        // Take a screenshot of the result page
+        const filename = this.currentTest.fullTitle()
+          .replace(/['"]+/g, '')
+          .replace(/[^a-z0-9]/gi, '_')
+          .toLowerCase();
+  
+        const encodedString = await driver.takeScreenshot();
+        await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+  
+        // Close the browser
+        await driver.quit();
+      } catch (error) {
+        console.error('Error during cleanup:', error);
+      }
+    }
+  });
 
   it('Calculator1', async function() {
     await driver.get("http://localhost:8080/")
-    await driver.manage().window().setRect({ width: 1440, height: 900 })
+    // await driver.manage().window().setRect({ width: 1440, height: 900 })
     await driver.findElement(By.id("num1")).click()
     await driver.findElement(By.id("num1")).sendKeys("1")
     await driver.findElement(By.id("num2")).click()

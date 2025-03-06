@@ -43,6 +43,14 @@ jobs:
 
           install-dependencies: true
 
+      - name: Install chromedriver
+        run: |
+          CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+          unzip chromedriver_linux64.zip -d $HOME/.chromedriver
+          sudo mv $HOME/.chromedriver/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+
       - run: |
 
             cd frontend/src
