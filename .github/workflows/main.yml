@@ -45,13 +45,13 @@ jobs:
 
       - run: |
 
-            cd src
+            cd frontend/src
 
-            python3 -m http.server 8000 &
+            python3 -m http.server 8080 &
 
             sleep 10 &&
 
-            curl http://localhost:8000
+            curl http://localhost:8080
 
             cd ..
 

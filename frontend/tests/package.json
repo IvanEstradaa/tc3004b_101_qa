@@ -11,5 +11,8 @@
   "dependencies": {
     "mocha": "^11.1.0",
     "selenium-webdriver": "^4.28.1"
+  },
+  "devDependencies": {
+    "start-server-and-test": "^2.0.10"
   }
 }
