@@ -72,7 +72,7 @@ describe('test1', function() {
 
   it('test1', async function() {
 
-    await driver.get("http://localhost:8000/")
+    await driver.get("http://localhost:8080/")
 
     await driver.manage().window().setRect({ width: 1050, height: 652 })
 
