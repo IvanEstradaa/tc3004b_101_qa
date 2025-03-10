@@ -14,7 +14,7 @@ describe('Calculator', function() {
     await driver.quit();
   })
   it('Calculator', async function() {
-    await driver.get("http://localhost:8080/")
+    await driver.get("http://localhost:8000/")
     await driver.manage().window().setRect({ width: 1440, height: 900 })
     await driver.findElement(By.id("num1")).click()
     await driver.findElement(By.id("num1")).sendKeys("1")
