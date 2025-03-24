@@ -1,0 +1,26 @@
+{
+	"info": {
+		"_postman_id": "57ca9775-30af-4570-9ab2-bd8c8a4bc3de",
+		"name": "Calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43083461"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Sub",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

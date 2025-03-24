@@ -44,8 +44,17 @@ jobs:
           install-dependencies: true
 
       - run: |
+            cd backend/calculator
 
-            cd src
+            mvn spring-boot:run &
+
+            sleep 10 &&
+
+            curl http://localhost:8080
+
+            cd ../../
+
+            cd frontend/src
 
             python3 -m http.server 8000 &
 
