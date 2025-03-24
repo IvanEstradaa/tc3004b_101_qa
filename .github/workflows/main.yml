@@ -1,83 +1,83 @@
-name: Run tests
-
- 
-
-on:
-
-  workflow_dispatch:
-  pull_request:
+  name: Run tests
 
   
 
-jobs:
+  on:
 
-  test:
+    workflow_dispatch:
+    pull_request:
 
-    name: Test
+    
 
-    runs-on: ubuntu-22.04
+  jobs:
 
- 
+    test:
 
-    container:
+      name: Test
 
-      image: node:20
+      runs-on: ubuntu-22.04
 
- 
+  
 
-    steps:
+      container:
 
-      - uses: actions/checkout@v4
+        image: node:20
 
-      - uses: actions/setup-node@v4
+  
 
-        with:
+      steps:
 
-          node-version: '20'
+        - uses: actions/checkout@v4
 
-      - uses: browser-actions/setup-chrome@v1
+        - uses: actions/setup-node@v4
 
-        with:
+          with:
 
-          chrome-version: 120
+            node-version: '20'
 
-          install-dependencies: true
+        - uses: browser-actions/setup-chrome@v1
 
-      - run: |
-            cd backend/calculator
+          with:
 
-            mvn spring-boot:run &
+            chrome-version: 120
 
-            sleep 10 &&
+            install-dependencies: true
 
-            curl http://localhost:8080
+        - run: |
+              cd backend/calculator
 
-            cd ../../
+              mvn spring-boot:run &
 
-            cd frontend/src
+              sleep 10 &&
 
-            python3 -m http.server 8000 &
+              curl http://localhost:8080
 
-            sleep 10 &&
+              cd ../../
 
-            curl http://localhost:8000
+              cd frontend/src
 
-            cd ..
+              python3 -m http.server 8000 &
 
-            cd tests
+              sleep 10 &&
 
-            npm install
+              curl http://localhost:8000
 
-            ./node_modules/.bin/mocha *.js
+              cd ..
 
-       
+              cd tests
 
-      - uses: actions/upload-artifact@v4
+              npm install
 
-        if: always()
+              ./node_modules/.bin/mocha *.js
 
-        with:
+        
 
-          name: screenshots
+        - uses: actions/upload-artifact@v4
 
-          path: screenshots/
+          if: always()
+
+          with:
+
+            name: screenshots
+
+            path: screenshots/
