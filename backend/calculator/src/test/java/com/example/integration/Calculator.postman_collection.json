@@ -19,7 +19,7 @@
 							"",
 							"pm.test(\"Response is correct\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.result).to.eql(\"100\");",
+							"    pm.expect(jsonData.result).to.eql(\"100.0\");",
 							"});"
 						],
 						"type": "text/javascript",
@@ -43,11 +43,11 @@
 					"query": [
 						{
 							"key": "num1",
-							"value": "90"
+							"value": "90.0"
 						},
 						{
 							"key": "num2",
-							"value": "10"
+							"value": "10.0"
 						}
 					]
 				}
@@ -67,7 +67,7 @@
 							"",
 							"pm.test(\"Response is correct\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.result).to.eql(\"80\");",
+							"    pm.expect(jsonData.result).to.eql(\"80.0\");",
 							"});"
 						],
 						"type": "text/javascript",
@@ -91,11 +91,11 @@
 					"query": [
 						{
 							"key": "num1",
-							"value": "90"
+							"value": "90.0"
 						},
 						{
 							"key": "num2",
-							"value": "10"
+							"value": "10.0"
 						}
 					]
 				}
